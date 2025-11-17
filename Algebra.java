@@ -73,7 +73,7 @@ public class Algebra {
 			
 			} else {
 				for (int i = 0 ; i < (-x2) ; i++) {
-				result = minus(x1, result);
+				result = minus(result, x1);
 				}
 		}
 		return result;
@@ -81,15 +81,18 @@ public class Algebra {
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
-		int result = 1;
 
 			if (x == 0) {
 				return 0; 
 			}
+			if (n == 0) {
+				return 1; 
+			}	
 			if (n == 1) {
 				return x; 
 			}	
 			if (n > 0) {
+				int result = 1;
 				for (int i = 0 ; i < n ; i++) {
 					result = times(result, x);
 				}
@@ -126,7 +129,7 @@ public class Algebra {
 		if (x2 == 0) {
 			return 0;
 		}
-		
+
 		int a = div(x1, x2);
 		int b = times(a, x2);
 
