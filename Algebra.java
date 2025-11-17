@@ -112,16 +112,28 @@ public class Algebra {
 			if (x1 == 0 || x2 == 0) {
 				return 0; 
 			}
-
-			while (x1 >= x2) {
-				x1 = minus(x1, x2);
-				result++;
+			int absX1 = x1; 
+			if (x1 < 0) {
+    		absX1 = minus(0, x1); // אם זה שלילי, הופכים לחיובי
 			}
+
+			int absX2 = x2;
+			if (x2 < 0) {
+   		 	absX2 = minus(0, x2);
+			}
+
+			int mana = 0;
+
+			while (absX1 >= absX2) {
+				absX1 = minus(absX1, absX2);
+				mana++;
+			}
+
 			if ((x1 < 0 && x2 > 0) || (x1 > 0 && x2 < 0)) {
-        return minus(0, result);
+				return minus(0, mana);
 		}
 
-		return result;
+		return mana;
 	}
 	
 	// Returns x1 % x2
