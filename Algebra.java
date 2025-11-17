@@ -34,7 +34,7 @@ public class Algebra {
 					result++;
 			}
 		} else {
-				for (int i = 0 ; i < (-x2) ; i++); {
+				for (int i = 0 ; i < (-x2) ; i++) {
 					result--;
 				}
 		}
@@ -53,8 +53,8 @@ public class Algebra {
 					result--;
 			}
 		} else {
-				for (int i = 0 ; i < (-x2) ; i++); {
-					result--;
+				for (int i = 0 ; i < (-x2) ; i++) {
+					result++;
 				}
 		}
 		return result;
@@ -66,9 +66,16 @@ public class Algebra {
 			if (x2 == 0 || x1 == 0) {
 				return 0; 
 			}
+			if (x2 > 0) {
 			for (int i = 0 ; i < x2 ; i++) {
 				result = plus(x1, result);
 			}
+			
+			} else {
+				for (int i = 0 ; i < (-x2) ; i++) {
+				result = minus(x1, result);
+				}
+		}
 		return result;
 	}	
 
@@ -82,11 +89,17 @@ public class Algebra {
 			if (n == 1) {
 				return x; 
 			}	
-
-			for (int i = 0 ; i < n ; i++) {
-				result = times(result, x);
+			if (n > 0) {
+				for (int i = 0 ; i < n ; i++) {
+					result = times(result, x);
+				}
+				return result;
 			}
-		return result;
+
+			else {
+
+		return 0;
+			}
 	}
 
 	// Returns the integer part of x1 / x2 
@@ -101,11 +114,19 @@ public class Algebra {
 				x1 = minus(x1, x2);
 				result++;
 			}
+			if ((x1 < 0 && x2 > 0) || (x1 > 0 && x2 < 0)) {
+        return minus(0, result);
+		}
+
 		return result;
 	}
 	
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
+		if (x2 == 0) {
+			return 0;
+		}
+		
 		int a = div(x1, x2);
 		int b = times(a, x2);
 
